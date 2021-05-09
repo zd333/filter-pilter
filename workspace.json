@@ -12,12 +12,17 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
+            "buildLibsFromSource": false,
             "outputPath": "dist/apps/public-api",
             "main": "apps/public-api/src/main.ts",
             "tsConfig": "apps/public-api/tsconfig.app.json",
-            "assets": ["apps/public-api/src/assets"]
+            "assets": [
+              "apps/public-api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -42,15 +47,72 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/public-api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/public-api/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/public-api"],
+          "outputs": [
+            "coverage/apps/public-api"
+          ],
           "options": {
             "jestConfig": "apps/public-api/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "gql": {
+      "root": "libs/gql",
+      "sourceRoot": "libs/gql/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx gen-gql gql"
+              },
+              {
+                "command": "nx build-lib gql"
+              }
+            ]
+          }
+        },
+        "gen-gql": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx ts-node libs/gql/generate-typings"
+              }
+            ]
+          }
+        },
+        "build-lib": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/gql",
+            "tsConfig": "libs/gql/tsconfig.lib.json",
+            "packageJson": "libs/gql/package.json",
+            "main": "libs/gql/src/index.ts",
+            "assets": [
+              "libs/gql/*.md"
+            ]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/gql/**/*.ts"
+            ]
           }
         }
       }

@@ -46,7 +46,6 @@
         "object-curly-spacing": ["error", "always"],
         "capitalized-comments": "error",
         "camelcase": "error",
-        "comma-dangle": ["error", "always-multiline"],
         "comma-spacing": "error",
         "comma-style": "error",
         "eol-last": "error",
@@ -75,12 +74,12 @@
         ],
         "prefer-object-spread": "error",
         "spaced-comment": "error",
+        "semi": "error",
         "no-duplicate-imports": "error",
         "prefer-const": "error",
         "prefer-destructuring": "error",
         "prefer-template": "error",
         "rest-spread-spacing": "error",
-        "sort-imports": "error",
         "one-var": ["error", "never"],
         "no-multi-spaces": "error",
         "@typescript-eslint/explicit-member-accessibility": [
@@ -136,7 +135,6 @@
           }
         ],
         "functional/immutable-data": "error",
-        "functional/prefer-readonly-type": ["error", { "ignoreClass": true }],
         "functional/no-let": "error",
         "immutable/no-mutation": "error"
       }

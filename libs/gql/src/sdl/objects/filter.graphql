@@ -1,0 +1,6 @@
+type Filter {
+  id: String!
+  title: String!
+  description: String
+  stages: [Stage!]!
+}
