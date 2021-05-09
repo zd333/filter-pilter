@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nrwl/nx", "deprecation", "functional", "immutable", "rxjs"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -30,6 +30,116 @@
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "deprecation/deprecation": "error",
+        "no-console": "warn",
+        "consistent-return": "error",
+        "eqeqeq": "error",
+        "no-magic-numbers": "error",
+        "no-multi-str": "error",
+        "no-unused-expressions": "error",
+        "no-shadow": "error",
+        "array-bracket-spacing": ["error", "never"],
+        "object-curly-spacing": ["error", "always"],
+        "capitalized-comments": "error",
+        "camelcase": "error",
+        "comma-dangle": ["error", "always-multiline"],
+        "comma-spacing": "error",
+        "comma-style": "error",
+        "eol-last": "error",
+        "key-spacing": "error",
+        "max-lines": [
+          "error",
+          { "max": 500, "skipBlankLines": true, "skipComments": true }
+        ],
+        "no-lonely-if": "error",
+        "no-multiple-empty-lines": "error",
+        "no-negated-condition": "error",
+        "no-trailing-spaces": "error",
+        "padding-line-between-statements": [
+          "error",
+          { "blankLine": "never", "prev": "*", "next": "import" },
+          { "blankLine": "always", "prev": "import", "next": "*" },
+          { "blankLine": "never", "prev": "import", "next": "import" },
+          { "blankLine": "always", "prev": "*", "next": "return" },
+          { "blankLine": "always", "prev": "if", "next": "*" },
+          { "blankLine": "always", "prev": ["const", "let"], "next": "*" },
+          {
+            "blankLine": "any",
+            "prev": ["const", "let"],
+            "next": ["const", "let", "var"]
+          }
+        ],
+        "prefer-object-spread": "error",
+        "spaced-comment": "error",
+        "no-duplicate-imports": "error",
+        "prefer-const": "error",
+        "prefer-destructuring": "error",
+        "prefer-template": "error",
+        "rest-spread-spacing": "error",
+        "sort-imports": "error",
+        "one-var": ["error", "never"],
+        "no-multi-spaces": "error",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "constructors": "off"
+            }
+          }
+        ],
+        "@typescript-eslint/array-type": ["error", { "default": "generic" }],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/consistent-type-imports": [
+          "warn",
+          { "prefer": "type-imports" }
+        ],
+        "@typescript-eslint/member-delimiter-style": "error",
+        "@typescript-eslint/no-confusing-non-null-assertion": "error",
+        "@typescript-eslint/no-confusing-void-expression": "error",
+        "@typescript-eslint/prefer-optional-chain": "error",
+        "@typescript-eslint/prefer-readonly": "error",
+        "@typescript-eslint/promise-function-async": "error",
+        "@typescript-eslint/require-array-sort-compare": "error",
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/typedef": [
+          "error",
+          {
+            "parameter": false,
+            "propertyDeclaration": false
+          }
+        ],
+        "@typescript-eslint/prefer-for-of": "error",
+        "@typescript-eslint/restrict-plus-operands": "error",
+        "rxjs/no-unsafe-catch": "error",
+        "rxjs/no-unsafe-first": "error",
+        "rxjs/no-create": "error",
+        "rxjs/no-internal": "error",
+        "rxjs/no-nested-subscribe": "error",
+        "rxjs/no-unsafe-takeuntil": "error",
+        "rxjs/finnish": [
+          "error",
+          {
+            "functions": false,
+            "methods": false,
+            "parameters": true,
+            "properties": true,
+            "variables": true,
+            "strict": false
+          }
+        ],
+        "functional/immutable-data": "error",
+        "functional/prefer-readonly-type": ["error", { "ignoreClass": true }],
+        "functional/no-let": "error",
+        "immutable/no-mutation": "error"
+      }
     }
   ]
 }

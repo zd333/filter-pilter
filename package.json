@@ -54,6 +54,11 @@
     "dotenv": "8.2.0",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-deprecation": "^1.2.1",
+    "eslint-plugin-functional": "^3.2.1",
+    "eslint-plugin-immutable": "^1.0.0",
+    "eslint-plugin-rxjs": "^3.3.0",
+    "husky": "^6.0.0",
     "jest": "26.2.2",
     "prettier": "2.2.1",
     "ts-jest": "26.5.5",
@@ -63,6 +68,11 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/commitlint"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   }
 }
