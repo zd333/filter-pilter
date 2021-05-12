@@ -1,3 +1,3 @@
 # gql
 
-This library was generated with [Nx](https://nx.dev).
+Library contains GraphQL definitions and corresponding TypeScript typings.

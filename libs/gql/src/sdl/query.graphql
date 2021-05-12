@@ -1,3 +1,4 @@
 type Query {
   userPlaces(userId: String!): [Place!]!
+  userFilters(userId: String!): [Filter!]!
 }

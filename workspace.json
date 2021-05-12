@@ -41,7 +41,9 @@
         "serve": {
           "executor": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "public-api:build"
+            "buildTarget": "public-api:build",
+            "inspect": true,
+            "port": 9229
           }
         },
         "lint": {
@@ -72,12 +74,13 @@
         "build": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
+            "parallel": false,
             "commands": [
               {
-                "command": "nx gen-gql gql"
+                "command": "npx nx run gql:gen-gql"
               },
               {
-                "command": "nx build-lib gql"
+                "command": "npx nx run gql:build-lib "
               }
             ]
           }

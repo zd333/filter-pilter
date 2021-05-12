@@ -1,7 +1,12 @@
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { FilterRepository, PlaceRepository } from './repositories';
+import { FilterService, PlaceService } from './domain/services';
 import { GraphQLModule } from '@nestjs/graphql';
 import { Module } from '@nestjs/common';
+import { PlaceResolver, FilterResolver } from './transport/graphql';
+
+const services = [PlaceService, FilterService];
+const repositories = [PlaceRepository, FilterRepository];
+const resolvers = [PlaceResolver, FilterResolver];
 
 @Module({
   imports: [
@@ -9,7 +14,6 @@ import { Module } from '@nestjs/common';
       typePaths: ['libs/gql/src/sdl/**/*.graphql'],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [...repositories, ...services, ...resolvers],
 })
 export class AppModule {}
